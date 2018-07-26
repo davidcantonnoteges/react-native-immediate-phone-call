@@ -1,8 +1,8 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from "react-native";
 
 var RNImmediatePhoneCall = {
-  immediatePhoneCall: function(number) {
-        NativeModules.RNImmediatePhoneCall.immediatePhoneCall(number);
+  immediatePhoneCall: function(number, contactId) {
+    NativeModules.RNImmediatePhoneCall.immediatePhoneCall(number, contactId);
   }
 };
 
