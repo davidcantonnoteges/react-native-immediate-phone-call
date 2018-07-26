@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -32,10 +33,20 @@ public class RNImmediatePhoneCallModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void immediatePhoneCall(String number) {
+    public void immediatePhoneCall(String number, Integer contactId) {
         number = Uri.encode(number);
         String url = "tel:" + number;
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(url));
+
+        intent.putExtra("contactId", contactId);
+
+
+
+        SharedPreferences pref = getReactApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("contactId", contactId); // Storing integer
+        editor.commit(); // commit changes
+
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.reactContext.startActivity(intent);
     }
