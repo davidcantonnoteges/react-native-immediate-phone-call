@@ -4,8 +4,12 @@ var RNImmediatePhoneCall;
 
 if (Platform.OS === "android") {
   RNImmediatePhoneCall = {
-    immediatePhoneCall: function(number, contactId) {
-      NativeModules.RNImmediatePhoneCall.immediatePhoneCall(number, contactId);
+    immediatePhoneCall: function(number, contactId, userId) {
+      NativeModules.RNImmediatePhoneCall.immediatePhoneCall(
+        number,
+        contactId,
+        userId
+      );
     }
   };
 } else {
