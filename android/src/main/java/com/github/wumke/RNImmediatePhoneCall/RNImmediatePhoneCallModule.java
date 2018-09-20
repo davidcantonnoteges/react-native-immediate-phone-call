@@ -33,14 +33,14 @@ public class RNImmediatePhoneCallModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void immediatePhoneCall(String number, Integer contactId, Integer userId, Integer personId, Integer propertyId, Integer demandId) {
+    public void immediatePhoneCall(String number, Integer contactId, Integer userId, Integer clientId, Integer propertyId, Integer demandId) {
         number = Uri.encode(number);
         String url = "tel:" + number;
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(url));
 
         intent.putExtra("contactId", contactId);
         intent.putExtra("userId", userId);
-intent.putExtra("personId", personId);
+intent.putExtra("clientId", clientId);
 intent.putExtra("propertyId", propertyId);
 intent.putExtra("demandId", demandId);
 
@@ -49,7 +49,7 @@ intent.putExtra("demandId", demandId);
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("contactId", contactId); // Storing integer
         editor.putInt("userId", userId);
-        editor.putInt("personId", personId);
+        editor.putInt("clientId", clientId);
         editor.putInt("propertyId", propertyId);
         editor.putInt("demandId", demandId);
         editor.apply(); // commit changes
