@@ -33,16 +33,18 @@ public class RNImmediatePhoneCallModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void immediatePhoneCall(String number, Integer contactId, Integer userId, Integer clientId, Integer propertyId, Integer demandId) {
+    public void immediatePhoneCall(String number, Integer contactId, Integer userId, Integer clientId, Integer propertyId, Integer demandId, String v3token, String token) {
         number = Uri.encode(number);
         String url = "tel:" + number;
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(url));
 
         intent.putExtra("contactId", contactId);
         intent.putExtra("userId", userId);
-intent.putExtra("clientId", clientId);
-intent.putExtra("propertyId", propertyId);
-intent.putExtra("demandId", demandId);
+        intent.putExtra("clientId", clientId);
+        intent.putExtra("propertyId", propertyId);
+        intent.putExtra("demandId", demandId);
+        intent.putExtra("v3token", v3token);
+        intent.putExtra("token", token);
 
 
         SharedPreferences pref = getReactApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
@@ -52,6 +54,8 @@ intent.putExtra("demandId", demandId);
         editor.putInt("clientId", clientId);
         editor.putInt("propertyId", propertyId);
         editor.putInt("demandId", demandId);
+        editor.putString("v3token", v3token);
+        editor.putString("token", token);
         editor.apply(); // commit changes
 
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
