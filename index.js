@@ -8,27 +8,28 @@ if (Platform.OS === "android") {
       number,
       contactId,
       userId,
-      personId,
+      clientId,
       propertyId,
       demandId
     ) {
-      if (typeof contactId === "undefined") {
+      debugger;
+      if (typeof contactId === "undefined" || contactId === 0) {
         contactId = -1;
       }
 
-      if (typeof userId === "undefined") {
+      if (typeof userId === "undefined" || userId === 0) {
         userId = -1;
       }
 
-      if (typeof personId === "undefined") {
-        personId = -1;
+      if (typeof clientId === "undefined" || clientId === 0) {
+        clientId = -1;
       }
 
-      if (typeof propertyId === "undefined") {
+      if (typeof propertyId === "undefined" || propertyId === 0) {
         propertyId = -1;
       }
 
-      if (typeof demandId === "undefined") {
+      if (typeof demandId === "undefined" || demandId === 0) {
         demandId = -1;
       }
 
@@ -36,7 +37,7 @@ if (Platform.OS === "android") {
         number,
         contactId,
         userId,
-        personId,
+        clientId,
         propertyId,
         demandId
       );
