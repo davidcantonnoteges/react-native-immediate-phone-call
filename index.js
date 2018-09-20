@@ -10,7 +10,9 @@ if (Platform.OS === "android") {
       userId,
       clientId,
       propertyId,
-      demandId
+      demandId,
+      v3token,
+      token
     ) {
       debugger;
       if (typeof contactId === "undefined" || contactId === 0) {
@@ -39,7 +41,9 @@ if (Platform.OS === "android") {
         userId,
         clientId,
         propertyId,
-        demandId
+        demandId,
+        v3token,
+        token
       );
     }
   };
