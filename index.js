@@ -45,6 +45,9 @@ if (Platform.OS === "android") {
         v3token,
         token
       );
+    },
+    saveTokens: function(v3token, token) {
+      NativeModules.RNImmediatePhoneCall.saveTokens(v3token, token);
     }
   };
 } else {
