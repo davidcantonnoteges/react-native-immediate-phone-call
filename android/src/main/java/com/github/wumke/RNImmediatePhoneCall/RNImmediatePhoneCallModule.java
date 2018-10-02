@@ -61,4 +61,14 @@ public class RNImmediatePhoneCallModule extends ReactContextBaseJavaModule {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.reactContext.startActivity(intent);
     }
+
+    @ReactMethod
+    public void saveTokens(String v3token, String token)
+    {
+        SharedPreferences pref = getReactApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("v3token", v3token);
+        editor.putString("token", token);
+        editor.apply(); // commit changes
+    }
 }
